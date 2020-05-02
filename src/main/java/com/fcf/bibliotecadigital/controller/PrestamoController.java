@@ -1,6 +1,8 @@
 package com.fcf.bibliotecadigital.controller;
 
+import com.fcf.bibliotecadigital.model.Libro;
 import com.fcf.bibliotecadigital.model.Prestamo;
+import com.fcf.bibliotecadigital.service.ILibroService;
 import com.fcf.bibliotecadigital.service.IPrestamoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,8 @@ public class PrestamoController {
 
     @Autowired
     private IPrestamoService service;
+    @Autowired
+    private ILibroService serviceLibro;
 
     @PostMapping(value = "/registrar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Prestamo> registrar(@RequestBody Prestamo prestamo){
@@ -75,4 +79,16 @@ public class PrestamoController {
         }
         return new ResponseEntity<Prestamo>(pres, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/prestamosPorAlumno/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Prestamo>> prestamosPorAlumno(@PathVariable("id") Integer id){
+        List<Prestamo> listaPrestamo = new ArrayList<>();
+        try{
+            listaPrestamo = service.prestamosPorAlumno(id);
+        }catch (Exception ex){
+            return new ResponseEntity<List<Prestamo>>(listaPrestamo, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<List<Prestamo>>(listaPrestamo, HttpStatus.OK);
+    }
+
 }

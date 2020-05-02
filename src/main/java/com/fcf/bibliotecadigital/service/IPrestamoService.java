@@ -10,4 +10,5 @@ public interface IPrestamoService {
     void editar(Prestamo prestamo);
     List<Prestamo> listar();
     Prestamo obtener(Integer id);
+    List<Prestamo> prestamosPorAlumno(Integer idAlumno);
 }

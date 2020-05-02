@@ -36,6 +36,7 @@ public class Alumno {
     private String telefono;
 
     //Para ver los prestamos de un alumno (mappedBy=NOMBRE DE ESTA TABLA EN BD)
+    //si o si en una de las 2 relacions tiene q ir el jsonIgnore
     @JsonIgnore
     @OneToMany(mappedBy="alumno" , cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE} , fetch=FetchType.LAZY, orphanRemoval=true)
     private List<Prestamo> prestamos;
