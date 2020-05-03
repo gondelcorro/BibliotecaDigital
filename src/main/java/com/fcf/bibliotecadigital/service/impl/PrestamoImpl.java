@@ -26,7 +26,7 @@ public class PrestamoImpl implements IPrestamoService {
         try {
             pres = dao.save(prestamo);
             Libro lib = libroDAO.getOne(pres.getLibro().getIdLibro());
-            lib.setEjemplaresDisp(lib.getNumEjemplares() - 1);
+            lib.setEjemplaresDisp(lib.getEjemplaresDisp() - 1);
             libroDAO.save(lib);
         }catch (Exception e){
             System.out.println("ERROR: " + e.getMessage());
@@ -39,9 +39,18 @@ public class PrestamoImpl implements IPrestamoService {
         dao.deleteById(id);
     }
 
+    @Transactional
     @Override
     public void editar(Prestamo prestamo) {
-        dao.save(prestamo);
+        Prestamo pres = new Prestamo();
+        try {
+            pres = dao.save(prestamo);
+            Libro lib = libroDAO.getOne(pres.getLibro().getIdLibro());
+            lib.setEjemplaresDisp(lib.getEjemplaresDisp() + 1);
+            libroDAO.save(lib);
+        }catch (Exception e){
+            System.out.println("ERROR: " + e.getMessage());
+        }
     }
 
     @Override
