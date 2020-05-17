@@ -74,4 +74,15 @@ public class LibroController {
         }
         return new ResponseEntity<Libro>(libro, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/buscarPorCodigo/{codigo}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> buscarPorCodigo(@PathVariable("codigo") String codigo){
+        Boolean existe = false;
+        try {
+            existe = service.buscarPorCodigo(codigo);
+        }catch (Exception e){
+            return new ResponseEntity<Boolean>(existe, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<Boolean>(existe, HttpStatus.OK);
+    }
 }

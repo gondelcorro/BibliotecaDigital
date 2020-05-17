@@ -1,0 +1,20 @@
+spring:
+   mail:
+    default-encoding: UTF-8
+    #smtp.gmail.com para un correo gmail
+    host: smtp-mail.outlook.com
+    username: gonzalo_delcorro@hotmail.com
+    password: Escorpio2604
+    #587 para un correo gmail
+    port: 587
+    properties:
+      mail:
+        ssl:
+          enable: true
+        smtp:
+          auth: true
+          starttls:
+            enable: true       
+            required: true     
+    protocol: smtp
+    test-connection: true

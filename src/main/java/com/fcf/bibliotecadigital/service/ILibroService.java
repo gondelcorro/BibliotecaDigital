@@ -11,4 +11,5 @@ public interface ILibroService {
     void editar(Libro libro);
     List<Libro> listar();
     Libro obtener(Integer id);
+    boolean buscarPorCodigo(String codigo);
 }

@@ -12,4 +12,5 @@ public interface IPrestamoDAO extends JpaRepository<Prestamo, Integer> {
 
     @Query(value = "SELECT * FROM prestamo WHERE id_alumno = ?1", nativeQuery = true)
     List<Prestamo> prestamosPorAlumno(Integer idAlumno);
+
 }

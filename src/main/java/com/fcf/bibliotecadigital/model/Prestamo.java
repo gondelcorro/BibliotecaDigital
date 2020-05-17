@@ -1,14 +1,17 @@
 package com.fcf.bibliotecadigital.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table
+@NamedQuery(name = Prestamo.BUSCAR_PRESTAMOS_A_VENCER, query = Prestamo.BUSCAR_PRESTAMOS_A_VENCER_QUERY)
 public class Prestamo {
+
+    public static final String BUSCAR_PRESTAMOS_A_VENCER = "PrestamoNameQuery.BUSCAR_PRESTAMOS_A_VENCER";
+    public static final String BUSCAR_PRESTAMOS_A_VENCER_QUERY = "SELECT p FROM Prestamo p WHERE p.fechaMaxDevolucion=:fechaActual";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,13 +34,13 @@ public class Prestamo {
 
     //Anotacion de jackson para q las fechas tengan el formato año mes dia (agregar dependencia en el pom)
     @JsonSerialize(using= ToStringSerializer.class)
-    private LocalDateTime fechaPrestamo;
+    private LocalDate fechaPrestamo;
 
     @JsonSerialize(using= ToStringSerializer.class)
-    private LocalDateTime fechaMaxDevolucion;
+    private LocalDate fechaMaxDevolucion;
 
     @JsonSerialize(using= ToStringSerializer.class)
-    private LocalDateTime fechaDevolucion;
+    private LocalDate fechaDevolucion;
 
     @Column(name = "estadoPrestamo", nullable = true, length = 120)
     @Enumerated(EnumType.STRING)
@@ -67,27 +70,27 @@ public class Prestamo {
         this.libro = libro;
     }
 
-    public LocalDateTime getFechaPrestamo() {
+    public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(LocalDateTime fechaPrestamo) {
+    public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public LocalDateTime getFechaMaxDevolucion() {
+    public LocalDate getFechaMaxDevolucion() {
         return fechaMaxDevolucion;
     }
 
-    public void setFechaMaxDevolucion(LocalDateTime fechaMaxDevolucion) {
+    public void setFechaMaxDevolucion(LocalDate fechaMaxDevolucion) {
         this.fechaMaxDevolucion = fechaMaxDevolucion;
     }
 
-    public LocalDateTime getFechaDevolucion() {
+    public LocalDate getFechaDevolucion() {
         return fechaDevolucion;
     }
 
-    public void setFechaDevolucion(LocalDateTime fechaDevolucion) {
+    public void setFechaDevolucion(LocalDate fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
 

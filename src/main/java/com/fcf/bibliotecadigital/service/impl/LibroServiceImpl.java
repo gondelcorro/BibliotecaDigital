@@ -38,4 +38,9 @@ public class LibroServiceImpl implements ILibroService {
     public Libro obtener(Integer id) {
         return libroDAO.getOne(id);
     }
+
+    @Override
+    public boolean buscarPorCodigo(String codigo) {
+        return !libroDAO.buscarPorCodigo(codigo).isEmpty() && (libroDAO.buscarPorCodigo(codigo) != null);
+    }
 }
