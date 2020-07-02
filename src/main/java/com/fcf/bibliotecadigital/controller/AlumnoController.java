@@ -75,4 +75,15 @@ public class AlumnoController {
         }
         return new ResponseEntity<Alumno>(alumno, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/buscarPorDni/{dni}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> buscarPorDni(@PathVariable("dni") String dni){
+        Boolean existe = false;
+        try {
+            existe = service.buscarPorDni(dni);
+        }catch (Exception e){
+            return new ResponseEntity<Boolean>(existe, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<Boolean>(existe, HttpStatus.OK);
+    }
 }

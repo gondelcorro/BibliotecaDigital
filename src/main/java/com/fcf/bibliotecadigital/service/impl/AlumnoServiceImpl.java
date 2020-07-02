@@ -37,4 +37,9 @@ public class AlumnoServiceImpl implements IAlumnoService {
     public Alumno obtener(Integer id) {
         return alumnoDAO.getOne(id);
     }
+
+    @Override
+    public boolean buscarPorDni(String dni) {
+        return !alumnoDAO.buscarPorDni(dni).isEmpty() && (alumnoDAO.buscarPorDni(dni) != null);
+    }
 }

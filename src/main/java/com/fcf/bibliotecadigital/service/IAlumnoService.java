@@ -12,4 +12,5 @@ public interface IAlumnoService {
     void editar(Alumno alumno);
     List<Alumno> listar();
     Alumno obtener(Integer id);
+    boolean buscarPorDni(String dni);
 }

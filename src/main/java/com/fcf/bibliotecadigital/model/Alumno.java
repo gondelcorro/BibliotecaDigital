@@ -22,8 +22,8 @@ public class Alumno {
     @Column(name = "legajo", nullable = true, length = 10)
     private String legajo;
 
-    @Column(name = "dni", nullable = true, length = 8)
-    private int dni;
+    @Column(name = "dni", nullable = true, length = 10)
+    private String dni;
 
     @Column(name = "correo", nullable = true, length = 40)
     private String correo;
@@ -73,11 +73,11 @@ public class Alumno {
         this.legajo = legajo;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
