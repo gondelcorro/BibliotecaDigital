@@ -82,6 +82,25 @@
             <artifactId>spring-boot-starter-batch</artifactId>
         </dependency>
 
+        <!-- DEPENDENCIA PARA SPRING SECURITY -->
+        <!--Respetar las 2 versiones definidas para jwt y oauth2 q son para Spring Boot 2.2.6-->
+        <!--Quitarlas para proyectos en versiones de Spring Boot anteriores-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-jwt</artifactId>
+            <version>1.0.10.RELEASE</version>
+        </dependency> <!--para q spring genere los tokens-->
+
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>2.3.5.RELEASE</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

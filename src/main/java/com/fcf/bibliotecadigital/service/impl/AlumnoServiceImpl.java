@@ -5,8 +5,6 @@ import com.fcf.bibliotecadigital.model.Alumno;
 import com.fcf.bibliotecadigital.service.IAlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Service
